@@ -1,0 +1,25 @@
+{{>header.html}}
+<p>
+  ADMIN
+</p>
+<div id="wrap">
+{{#adminForm}}
+<form id="{{fid}}">
+  {{#itemId}}<input type="hidden" id="itemId" value="{{itemId}}"/>{{/itemId}}
+  {{#fields}}
+    {{#label}}<label{{#id}} for="{{id}}"{{/id}}>{{label}}</label>{{/label}}
+    {{#rows}}
+      <textarea rows="{{rows}}" cols="{{cols}}" id="{{id}}">{{content}}</textarea>
+    {{/rows}}
+    {{^rows}}
+      <input type="{{type}}" value="{{value}}"{{#name}} name="{{name}}"{{/name}}/>
+      {{#after}}
+      <{{el}}{{#id}} id="{{id}}"{{/id}}>
+      {{/after}}
+    {{/rows}}
+  {{/fields}}
+</form></div>
+<div id="preview"></div>
+{{/adminForm}}  
+</div>
+{{>footer.html}}

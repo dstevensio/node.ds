@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" type="text/css" href="/styles/base.css"/>
+  {{#stylesheets}}
+  <link rel="stylesheet" type="text/css" href="{{stylesheet}}">
+  {{/stylesheets}}
+  <script type="text/javascript" src="/js/LAB.min.js"></script>
+  <script type="text/javascript">
+    $LAB
+    .script("/js/jquery-1.5.1.min.js").wait()
+    .script("/js/sublingual.js")
+    {{#js}}
+    .script("{{filename}}"){{#wait}}.wait(){{/wait}}
+    {{/js}}
+    .wait();
+  </script>
+</head>
+<body>
+  <a href="/"><h1>DS</h1></a><ul>{{#sections}}<li><a href="{{uri}}" title="{{title}}">{{text}}</a></li>{{/sections}}</ul>  

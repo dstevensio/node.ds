@@ -1,0 +1,25 @@
+{{>header.html}}
+{{#articles}}
+<ul>
+  {{#articleList}}
+    <li><a href="/article/{{uri}}">{{title}}</a></li>
+  {{/articleList}}
+</ul>
+{{/articles}}
+{{#article}}
+<h2>{{title}}</h2>
+<div id="postContent">
+{{{content}}}
+</div>
+{{#created}}
+<p>
+  Created: {{created}}
+</p>
+{{/created}}
+{{#modified}}  
+<p>
+  Last Modified: {{modified}}
+</p>
+{{/modified}}
+{{/article}}
+{{>footer.html}}
