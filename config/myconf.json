@@ -1,0 +1,12 @@
+{
+  "sections": [
+    {"url":"/example", "title":"An Example", "text":"Example"}
+  ],
+  "redirects":{
+    "twitter":"http://twitter.com/USERNAME",
+    "github":"http://github.com/USERNAME",
+    "facebook":"http://facebook.com/USERNAME",
+    "linkedin":"http://www.linkedin.com/in/USERNAME",
+    "flickr":"http://www.flickr.com/photos/USERNAME"
+  }
+}
