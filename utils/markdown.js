@@ -21,10 +21,13 @@ module.exports = function(app) {
     }
                     
     var mainStr = type + ":",
-        title = req.body.title ? req.body.title.replace(" ","-") : "untitled",
         nowDate = new Date(),
-        nowDateTime = dsutils.dateFormat();
-    title = title.replace(/[^A-Za-z0-9\-]/,"");
+        title = req.body.title || "Untitled",
+        uri = req.body.title ? req.body.title.replace(/\s/g,"-") : "untitled-article-"+(nowDate.toString()).replace(/\s/g,"-"),
+        nowDateTime = dsutils.dateFormat(nowDate);
+        
+    uri = uri.replace(/[^A-Za-z0-9\-]/g,"");
+    uri = uri.toLowerCase();
 
     if (!itemId) {
       redisWrite.writeNew("item", function (err, id) {
@@ -39,7 +42,9 @@ module.exports = function(app) {
         client.zunionstore("items",2,"articles","links");
         
         if (type == "article") {
-          client.set("article-title:"+title+":id", id); 
+          client.set(mainStr + "uri", uri);
+          client.set("article-title:"+uri+":id", id); 
+          client.set(mainStr + "description", req.body.description);
           client.set(mainStr + "content", bodyContent);            
         } else if (type == "link") {
           var matches = bodyContent.match(/^(http:\/\/.+)\n\n(.+)/i);
@@ -51,7 +56,7 @@ module.exports = function(app) {
         
         client.set(mainStr + "datetime-created", nowDateTime);
         client.set(mainStr + "datetime-modified", nowDateTime);
-                  
+                          
         res.writeHead(200,{"Content-Type":"text/plain"});
         res.end("Success.");          
       });        
@@ -70,10 +75,6 @@ module.exports = function(app) {
       res.end("Success.");        
     }
     
-  });
-
-  app.get('/return', function(req,res) {
-    console.log('GETTED');
   });
 
 }

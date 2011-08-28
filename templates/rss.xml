@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>davestevens.us Articles</title>
+    <link>http://davestevens.us/articles/</link>
+    <description>Various articles relating to javascript development, node.js, application security and related topics.</description>
+    <language>en-us</language>
+    <pubDate>Sun, 28 Aug 2011 02:16:00 GMT</pubDate>
+    <lastBuildDate>{{feedDate}}</lastBuildDate>
+    <managingEditor>dave@davestevens.us</managingEditor>
+    <webMaster>dave@davestevens.us</webMaster>
+    {{#articles}}
+    <item>
+      <title>{{title}}</title>
+      <link>{{uri}}</link>
+      <description>
+        {{description}}
+      </description>
+      <pubDate>{{modified}}</pubDate>
+      <guid>
+        {{uri}}
+      </guid>
+    </item>
+    {{/articles}}
+  </channel>
+</rss>    

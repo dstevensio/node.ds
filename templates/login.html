@@ -1,0 +1,15 @@
+{{>header.html}}
+<h2>Log in</h2>
+{{#errorMsg}}
+<div class="error">
+  {{errorMsg}}
+</div>
+{{/errorMsg}}
+<div>
+  <form id="login" action="/login" method="post">
+    <label for="uname">{{unameLabel}}</label> <input type="text" name="uname" id="uname" />
+    <label for="pwd">{{pwdLabel}}</label> <input type="password" name="pwd" id="pwd" />
+    <input type="submit" value="Log In" class="submit" />   
+  </form>
+</div>
+{{>footer.html}}

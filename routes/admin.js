@@ -5,6 +5,7 @@ var output = require('../output'),
         {"type":"radio", "name":"createtype", "value":"article", "label":"Create article"},
         {"type":"radio", "name":"createtype", "value":"link", "label":"Create link"},
         {"type":"text", "id":"createtitle", "value":"", "label":"Title"},
+        {"type":"text", "id":"createdescription", "value":"", "label":"Description"},        
         {"type":"text", "id":"createcategory", "value":"", "label":"Category", "after":{"el":"div","id":"input"}},
         {"type":"textarea", "id":"updateText", "rows":"50", "cols":"80", "content":""},
         {"type":"submit", "value":"Save"}

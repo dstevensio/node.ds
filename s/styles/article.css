@@ -1,0 +1,17 @@
+ul.prominent li {font-size:1.6em; padding-bottom:20px; padding-left:20px;}
+ul.prominent li a {font-size:1.1em; display:block; margin-bottom:20px; margin-left:-20px;}
+
+h2.articleTitle {font-size:2.4em;}
+
+div#summary {font-size:2.2em;font-family:serif;font-style:italic;background:rgba(70,130,180,0.9); color:#fff;padding:40px; text-shadow:1px 1px 0 #404040; -webkit-border-radius:3px;}
+
+p {font-size:1.6em;padding-left:20px;}
+p.tweetBack {font-size:1.4em; background: #f1f1f1 url(/imgs/twitterCut.png) no-repeat 2% 50%; padding:20px 75px; margin-top:40px; margin-bottom:0;}
+p.metaDates {font-size:1.2em; border-top:1px solid #e5e5e5; padding-top:40px; margin-top:0px;}
+p.metaDates>span {display:block;margin-bottom:5px;}
+
+pre {padding:25px; background:#ccc; margin-left:20px;}
+code {font-size:1.6em; line-height:1.5em;}
+
+ol {font-size:1.6em;}
+ol li {margin-left:20px; margin-bottom:10px; color:#505050;}

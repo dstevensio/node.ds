@@ -6,14 +6,22 @@ var connect = require('connect'),
     articles = require('./routes/articles'),
     elsewhere = require('./routes/elsewhere'),
     rHome = require('./routes/home'),
+    rError = require('./routes/error'),
+    rProblem = require('./routes/problem'),
+    rss = require('./routes/rss'),
     redirects = require('./routes/redirects'),
     specials = require('./routes/specials');    
-    
-client = redis.createClient();
 
-APP = {};
-
-(function () {
+APP = {};  
+knownIds = {
+  "home":{},
+  "articles":{},
+  "rss":{}
+};
+client = redis.createClient(6379);
+  
+(function(){
+  
   var config = fs.readFileSync(__dirname + '/config/conf.json');
   APP.config = JSON.parse(config.toString());
 
@@ -34,13 +42,21 @@ APP = {};
       rRedirects = connect(
         connect.router(redirects)
       ),
+      rRss = connect(
+        connect.router(rss)
+      ),
       rSpecials = connect(
         connect.router(specials)
-      );
+      ),
+      authCheck = require('./utils/auth');
 
-  connect(
+  connect(    
+    connect.favicon(__dirname + '/s/favicon.ico'),
     connect.bodyParser(),
-    connect.static(__dirname + '/s')
+    connect.static(__dirname + '/s'),
+    connect.cookieParser(),
+    connect.session({ secret: 'backbagdanielloughborough' }),
+    authCheck
   )
     .use('/admin',rAdmin)
     .use('/aea', rSpecials)
@@ -50,15 +66,23 @@ APP = {};
     .use('/article', rArticles)
     .use('/articles', rArticles)
     .use('/md', rMarkdown)
+    .use('/work-with-me', rSpecials)
     .use('/elsewhere', rElsewhere)
     .use('/twitter', rRedirects)
     .use('/facebook', rRedirects)
     .use('/github', rRedirects)
     .use('/flickr', rRedirects)
     .use('/linkedin', rRedirects)
+    .use('/rss', rRss)
+    .use('/feed', rRss)
     .use(function(req,res){
-      rHome(req,res);
+      if (req.originalUrl == '/') {
+        rHome(req,res);
+      } else {
+        rError(req,res);
+      }
     })
-    .listen(8888);
+    .listen(32879);
 
 }());
+// add a try/catch to each block file, catching errors and using error500.html to display there's a problem

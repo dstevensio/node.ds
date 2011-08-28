@@ -12,7 +12,7 @@
       <textarea rows="{{rows}}" cols="{{cols}}" id="{{id}}">{{content}}</textarea>
     {{/rows}}
     {{^rows}}
-      <input type="{{type}}" value="{{value}}"{{#name}} name="{{name}}"{{/name}}/>
+      <input type="{{type}}" value="{{value}}"{{#id}} id="{{id}}"{{/id}}{{#name}} name="{{name}}"{{/name}}/>
       {{#after}}
       <{{el}}{{#id}} id="{{id}}"{{/id}}>
       {{/after}}

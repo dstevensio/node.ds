@@ -1,0 +1,28 @@
+div#mainThemes>div {float:left; width:33%; text-align:center; background:#f1f1f1; border-right:1px solid #f5f5f5; border-left:1px solid #ccc;}
+div#mainThemes>div:nth-of-type(1) {border-left:0;}
+div#mainThemes>div>span {font-size:1.8em; display:block; margin-top:10px; padding-top:10px; padding-bottom:20px;}
+div#mainThemes>div>p {background:rgba(255,255,255,0.85); margin-top:120px; text-align:left; color:#000; text-shadow:1px 1px 0 #fff; padding: 10px 20px 5px 30px;}
+div#mainThemes>div.clearing {float:none;clear:both;border:0;width:100%;background:transparent;padding-top:50px;}
+div#mainThemes>div.clearing p {padding-top:50px; color:#808080;}
+
+h2 {margin-top:65px;}
+h2:nth-of-type(1) {margin-top:0;}
+
+p {padding-left:20px; padding-right:30px;}
+p.first {padding-left:0; font-size:1.8em; margin-top:45px; margin-bottom:45px;}
+
+h2#aggActHeader,
+div#aggregatedActivity {display:none;}
+div#articleList>ul, 
+div#aggregatedActivity>ul {margin-left:35px;}
+div#articleList>ul li,
+div#aggregatedActivity>ul li {font-size:1.6em; line-height:1.5em; padding-left:20px; padding-bottom:20px;}
+div#articleList>ul li a,
+div#aggregatedActivity>ul li a {display:block; margin-left:-20px; margin-bottom:20px;}
+
+div#mainThemes>div.mobile {background:#f1f1f1 url(/imgs/scorecenter.png) no-repeat top center;}
+div#mainThemes>div.web {background:#f1f1f1 url(/imgs/zappos.png) no-repeat top center;}
+div#mainThemes>div.node {background:#f1f1f1 url(/imgs/node.png) no-repeat top center;}
+
+div#socnets>a {margin: 0 20px 0 20px;}
+h2>a>img {margin-left:5px;}

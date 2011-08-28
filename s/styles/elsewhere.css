@@ -1,0 +1,5 @@
+h2 {font-size:1.8em;}
+p {font-size:1.6em;}
+
+ul.dotted {list-style-type:disc;}
+ul.dotted li {font-size:1.6em; margin-bottom:15px;}

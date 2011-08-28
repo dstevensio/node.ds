@@ -8,5 +8,8 @@
     "facebook":"http://facebook.com/USERNAME",
     "linkedin":"http://www.linkedin.com/in/USERNAME",
     "flickr":"http://www.flickr.com/photos/USERNAME"
-  }
+  },
+  "defaults":{
+    "pageTitle":""
+  }  
 }

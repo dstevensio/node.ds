@@ -15,8 +15,6 @@
               "str":escape(newVal)
             },
             success: function(data) {
-              console.log('data:');
-              console.log(data);
               var d = JSON.parse(data);
               $("#preview").html(unescape(d.output));
               cachedText = newVal;
@@ -64,7 +62,8 @@
         data: {
           "title":$('#createtitle').val(),
           "id":$('#itemId').val() || null,
-          "category":$('#createcategory').val(),
+          "cat":$('#createcategory').val(),
+          "description":$('#createdescription').val(),
           "type":$('input[@name=createtype]:checked').val(),
           "str":escape($("#updateText").val())
         },

@@ -5,7 +5,12 @@ var Mu = require('mu'),
       'admin.html',
       'article.html',
       'elsewhere.html',
-      'specials.html'
+      'problem.html',
+      'error404.html',
+      'login.html',
+      'about.html',
+      'specials.html',
+      'rss.xml'
     ],
     tlen = templates.length;
 
@@ -18,12 +23,14 @@ while (tlen--) {
 }
 
 module.exports = function(req,res,content) {
+  console.log("content:");
+  console.log(content);
   if (content.type && content.type == 'application/json') {
     res.writeHead(200, {'Content-Type':content.type});
     res.end(content.data);
   } else {      
     res.writeHead(200, {'Content-Type' : content.type || "text/html"});
-    content.data.pageTitle = content.data.pageTitle || "Dave Stevens (shakefon) is not your #1 enemy";
+    content.data.pageTitle = content.data.pageTitle || APP.config.defaults.pageTitle;
     content.data.sections = content.data.sections || APP.config.sections || [];
     pump(Mu.render(content.template, content.data),res);
   }

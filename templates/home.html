@@ -1,6 +1,67 @@
 {{>header.html}}
-<p>
-  HOME
+<!-- HAVE SETUP SECTION: HOMEPAGE THEMES -->
+<!-- LIST THEM HERE -->
+<p class="first">
+  Dave Stevens is an Application Security Engineer and Developer with a great love of Javascript. <em>I</em> am
+  Dave Stevens. I have an especially strong love of <a href="http://nodejs.org">node.js</a>. I love talking to
+  people. I'd love to talk to you.
 </p>
-{{{pageContent}}}
+<h2>What's he ever done that's so great anyway?</h2>
+<div id="mainThemes">
+  <div class="mobile">
+    <p>
+      While employed at ESPN, I was part of
+      the team that created the ESPN Scorecenter
+      iPhone App, the #1 Free Sports App in the App
+      Store for more than 6 months after launch.
+    </p>
+    <span>Mobile</span>
+  </div>
+  <div class="web">
+    <p>
+      In my previous position at Zappos, I was
+      in the Front-End Development team and completed
+      many projects for the Product Pages on the site
+      as well as work for 6pm.com
+    </p>
+    <span>Web</span>
+  </div>
+  <div class="node">
+    <p>
+      The majority of my development time is spent working in
+      node.js and this site is entirely constructed using
+      it. Keep an eye on my <a href="http://github.com/shakefon">Github account</a>
+      as I will be sharing code there.
+    </p>
+    <span>node.js</span>
+  </div>
+  <div class="clearing" id="socnets">
+    <a title="I'm on Twitter as @shakefon" href="/twitter"><img src="/imgs/twitter.png"/></a>
+    <a title="I'm on Github as shakefon" href="/github"><img src="/imgs/github.jpg" height="24" /></a>
+    <a title="E-mail Me - dave@davestevens.us" href="mailto:dave@davestevens.us"><img src="/imgs/mail.png"/></a>
+    {{#workwithme}}
+    <a href="#">Work With Me!</a>
+    {{/workwithme}}
+  </div>
+</div>
+<h2>Articles <a title="RSS Feed (Articles)" href="/feed"><img src="/imgs/rss.png" height="16"/></a></h2>
+<div id="articleList">
+  <ul>
+  {{#articles}}
+    <li><a href="{{uri}}">{{title}}</a> {{description}}</li>
+  {{/articles}}
+  </ul>
+</div>
+<h2>On the subject of writing</h2>
+<p>
+  Like most developers I've ever met, I tend to find there just aren't enough hours in the day to achieve everything I'd like to. As a result, I don't intend to maintain a regular blog here as I would hate for it to become stale &amp; stagnant when time constraints prevented me from writing. However, I do love to write and I have plenty to talk about, so expect infrequent posts to appear here in something loosely reminiscent of article form.
+</p>
+<h2 id="aggActHeader">Aggregated Activity</h2>
+<div id="aggregatedActivity">
+  <ul>
+  {{#feed}}
+    <li><a href="{{uri}}">{{title}}</a><span class="{{source}}"></span></li>
+  {{/feed}}
+  </ul>  
+</div>
 {{>footer.html}}

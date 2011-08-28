@@ -1,24 +1,36 @@
 {{>header.html}}
-{{#articles}}
-<ul>
-  {{#articleList}}
-    <li><a href="/article/{{uri}}">{{title}}</a></li>
-  {{/articleList}}
+{{#articleListing}}
+<h2>Articles <a title="RSS Feed (Articles)" href="/feed"><img src="/imgs/rss.png" height="16"/></a></h2>
+<ul class="prominent">
+  {{#articles}}
+    <li><a href="{{uri}}">{{title}}</a> {{description}}</li>
+  {{/articles}}
 </ul>
-{{/articles}}
+{{/articleListing}}
 {{#article}}
-<h2>{{title}}</h2>
+<h2 class="articleTitle">{{title}}</h2>
+<div id="summary">
+  {{description}}
+</div>  
 <div id="postContent">
 {{{content}}}
 </div>
-{{#created}}
-<p>
-  Created: {{created}}
+<p class="tweetBack">
+  The thing about comments sections is that they get out of hand, so I encourage discussion via Twitter because I'm always on there. Got something to say about
+  this article? <a href="https://twitter.com/intent/tweet?source=webclient&text=@shakefon">Catch up with me (@shakefon)</a> and I'll endeavor to get back to you ASAP.
 </p>
+{{#created}}
+<p class="metaDates">
+  <span>Created: {{created}}</span>
+{{/created}}
+{{^created}}
+<p class="metaDates">
 {{/created}}
 {{#modified}}  
-<p>
-  Last Modified: {{modified}}
+  <span>Last Modified: {{modified}}</span>
+</p>
+{{/modified}}
+{{^modified}}
 </p>
 {{/modified}}
 {{/article}}
