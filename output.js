@@ -23,12 +23,11 @@ while (tlen--) {
 }
 
 module.exports = function(req,res,content) {
-  console.log("content:");
-  console.log(content);
   if (content.type && content.type == 'application/json') {
     res.writeHead(200, {'Content-Type':content.type});
     res.end(content.data);
   } else {      
+    if (!content.type && promotejs) { content.data.promotejs = promotejs; }
     res.writeHead(200, {'Content-Type' : content.type || "text/html"});
     content.data.pageTitle = content.data.pageTitle || APP.config.defaults.pageTitle;
     content.data.sections = content.data.sections || APP.config.sections || [];

@@ -1,5 +1,6 @@
 var connect = require('connect'),
     fs = require('fs'),
+    http = require('http'),
     redis = require('redis'),
     admin = require('./routes/admin'),
     markdown = require('./utils/markdown'),
@@ -13,12 +14,30 @@ var connect = require('connect'),
     specials = require('./routes/specials');    
 
 APP = {};  
+promotejs = null;
 knownIds = {
   "home":{},
   "articles":{},
   "rss":{}
 };
 client = redis.createClient(6379);
+
+var fetchPromoteJS = function fetchPromoteJS() {
+  var options = {
+    host: 'promotejs.com',
+    port: 80,
+    path: '/plz'
+  };
+  http.get(options, function(res) {
+    var jsObj = "";
+    res.on('data', function (chunk) {
+      jsObj += chunk;
+    });
+    res.on('end', function() {
+      promotejs = JSON.parse(jsObj);
+    });
+  });  
+};
   
 (function(){
   
@@ -26,6 +45,9 @@ client = redis.createClient(6379);
   APP.config = JSON.parse(config.toString());
 
   config = null;
+
+  fetchPromoteJS();
+  setInterval(fetchPromoteJS, 3600000); // Get a new one every hour
 
   var rAdmin = connect(
         connect.router(admin)
