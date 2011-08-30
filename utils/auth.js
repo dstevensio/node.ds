@@ -68,7 +68,7 @@ showLogInScreen = function(req, res, msg) {
 checkCredentials = function(req, res, callback) {
   // call db to check it
   var auth = {
-    isLoggedIn: (req.body.uname == "*****" && req.body.pwd == "*******")
+    isLoggedIn: (req.body.uname == APP.config.user && req.body.pwd == APP.config.pass)
   };  
   callback(req,res,auth);
 };

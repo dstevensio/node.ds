@@ -28,6 +28,7 @@ module.exports = function(req,res,content) {
     res.end(content.data);
   } else {      
     if (!content.type && promotejs) { content.data.promotejs = promotejs; }
+    if (!content.type && klout) { content.data.klout = klout; }
     res.writeHead(200, {'Content-Type' : content.type || "text/html"});
     content.data.pageTitle = content.data.pageTitle || APP.config.defaults.pageTitle;
     content.data.sections = content.data.sections || APP.config.sections || [];

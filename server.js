@@ -15,6 +15,7 @@ var connect = require('connect'),
 
 APP = {};  
 promotejs = null;
+klout = null;
 knownIds = {
   "home":{},
   "articles":{},
@@ -38,6 +39,26 @@ var fetchPromoteJS = function fetchPromoteJS() {
     });
   });  
 };
+
+var fetchKlout = function fetchKlout() {
+  var options = {
+    host: 'api.klout.com',
+    port: 80,
+    path: '/1/klout.json?users=shakefon&key=pabbqsrbgy4yj7k3tfwqvpaa'
+  };
+  http.get(options, function(res) {
+    var jsObj = "";
+    res.on('data', function (chunk) {
+      jsObj += chunk;
+    });
+    res.on('end', function() {
+      var k = JSON.parse(jsObj);
+      if (k) {
+        klout = {score:k.users[0].kscore};
+      }
+    });
+  });    
+};
   
 (function(){
   
@@ -48,7 +69,8 @@ var fetchPromoteJS = function fetchPromoteJS() {
 
   fetchPromoteJS();
   setInterval(fetchPromoteJS, 3600000); // Get a new one every hour
-
+  //fetchKlout();
+  
   var rAdmin = connect(
         connect.router(admin)
       ),
@@ -77,7 +99,7 @@ var fetchPromoteJS = function fetchPromoteJS() {
     connect.bodyParser(),
     connect.static(__dirname + '/s'),
     connect.cookieParser(),
-    connect.session({ secret: 'backbagdanielloughborough' }),
+    connect.session({ secret: APP.config.secret }),
     authCheck
   )
     .use('/admin',rAdmin)
