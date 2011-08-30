@@ -20,12 +20,13 @@ module.exports = function(app) {
     res.writeHead(301, {
       "Location":APP.config.redirects[where]
     });
-    res.end();
-    
-    content.data = {
-      pageContent:'<p>Oh darn. Magical web trickery that neither you or I truly understand was meant to automatically whisk you away to <a href="' + APP.config.redirects[where] + '">' + APP.config.redirects[where] + '</a> but the fact that you\'re reading this shows it hasn\'t worked. Why not live like it\'s the heady days of 1996 and click the link to go there directly.</p><p>If you\'re wondering, yes I am ashamed.</p>'
-    };
-    output(req,res,content);
+    res.on("error", function() {
+      content.data = {
+        pageContent:'<p>Oh darn. Magical web trickery that neither you or I truly understand was meant to automatically whisk you away to <a href="' + APP.config.redirects[where] + '">' + APP.config.redirects[where] + '</a> but the fact that you\'re reading this shows it hasn\'t worked. Why not live like it\'s the heady days of 1996 and click the link to go there directly.</p><p>If you\'re wondering, yes I am ashamed.</p>'
+      };
+      output(req,res,content);      
+    });
+    res.end();    
   });
   
 };

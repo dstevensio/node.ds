@@ -94,6 +94,8 @@ var fetchPromoteJS = function fetchPromoteJS() {
     .use('/facebook', rRedirects)
     .use('/github', rRedirects)
     .use('/flickr', rRedirects)
+    .use('/delicious', rRedirects)
+    .use('/lastfm', rRedirects)
     .use('/linkedin', rRedirects)
     .use('/rss', rRss)
     .use('/feed', rRss)
